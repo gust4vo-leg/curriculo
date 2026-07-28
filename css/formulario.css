@@ -1,0 +1,120 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: var(--accent-soft);
+    color: var(--letra);
+    padding: 32px 20px 80px;
+}
+
+header {
+    padding: 20px;
+}
+
+header h1 {
+    color: #1E3A8A;
+}
+
+header p {
+    color: var(--detalhes-txt);
+}
+
+form {
+    background: var(--surface);
+    padding: 44px;
+    border: 1px solid var(--cor-cinza-borda);
+    border-radius: 15px;
+}
+
+.form-section {
+    border: 1px solid var(--cor-cinza-borda);
+    border-radius: 8px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-section legend {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--cor-primaria);
+    padding: 0 8px;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--cor-texto-mutado);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 14px;
+    border: 1px solid var(--cor-cinza-borda);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--cor-texto-principal);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cor-cinza-borda);
+}
+
+.popup-actions button {
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: var(--cor-primaria-hover);
+}
