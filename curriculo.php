@@ -1,3 +1,27 @@
+<?php
+  $nome = $_POST['nome'] ?? '';
+  $cargo = $_POST['cargo_pessoal'] ?? '';
+  $cidade = $_POST['cidade'] ?? '';
+  $data = $_POST['data_nascimento'] ?? '';
+  $resumo = $_POST['resumo'] ?? '';
+
+  $email = $_POST['email'] ?? '';
+  $telefone = $_POST['telefone'] ?? '';
+  $linkedin = $_POST['linkedin'] ?? '';
+  $github = $_POST['github'] ?? '';
+
+  $instituicao = $_POST['instituicao'] ?? '';
+  $curso = $_POST['curso'] ?? '';
+  $edu_inicio = $_POST['edu_inicio'] ?? '';
+  $edu_fim = $_POST['edu_fim'] ?? '';
+
+  $empresa = $_POST['empresa'] ?? '';
+  $cargo_exp = $_POST['cargo_exp'] ?? '';
+  $exp_inicio = $_POST['exp_inicio'] ?? '';
+  $exp_fim = $_POST['exp_fim'] ?? '';
+  $descricao = $_POST['descricao_exp'] ?? '';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -20,10 +44,10 @@
     <div class="header">
       <div class="name-row">
         <div class="info-principais">
-          <h1>Maria Fernandes</h1>
+          <h1><?= htmlspecialchars($nome) ?></h1>
           <div class="mais-detalhes">
-            <p>Santa Maria</p>
-            <p>21/06/2000</p>
+            <p><?= htmlspecialchars($cidade) ?></p>
+            <p><?= htmlspecialchars($data) ?></p>
           </div>
         </div>
         <div class="perfil-acoes">
@@ -32,7 +56,7 @@
       </div>
 
       <div class="contatos">
-        <span>maria.fernandes@exemplo.com</span>
+        <span><?= htmlspecialchars($email) ?></span>
         <span>(11) 99999-0000</span>
         <span>linkedin.com/in/mariafernandes</span>
         <span>github.com/mariafernandes</span>
@@ -124,7 +148,7 @@
               </div>
               <div class="form-group">
                 <label for="cargo_pessoal">Cargo</label>
-                <input type="text" id="cargo_pessoal" name="cargo_pessoal" 
+                <input type="text" id="cargo_pessoal" name="cargo_pessoal"
                   placeholder="Ex: Analista de Dados Pleno">
               </div>
             </div>
@@ -249,18 +273,17 @@
 
     const abrirModal = () => {
       overlayPopup.classList.remove('escondido');
-      document.body.style.overflow = 'hidden'; 
+      document.body.style.overflow = 'hidden';
     };
 
     const fecharModal = () => {
       overlayPopup.classList.add('escondido');
-      document.body.style.overflow = ''; 
+      document.body.style.overflow = '';
     };
 
     if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
     btnFechar.addEventListener('click', fecharModal);
     btnCancelar.addEventListener('click', fecharModal);
-
   </script>
 </body>
 
