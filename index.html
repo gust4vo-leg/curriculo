@@ -18,10 +18,12 @@
 
     <div class="header">
       <div class="name-row">
-        <div>
+        <div class="info-principais">
           <h1>Maria Fernandes</h1>
-          <p class="headline">Analista de Dados Pleno · São Paulo, SP</p>
-          <span class="tag">● Aberta a oportunidades</span>
+          <div class="mais-detalhes">
+            <p>Santa Maria</p>
+            <p>21/06/2000</p>
+          </div>
         </div>
         <div class="perfil-acoes">
           <button class="btn-edit" id="abrirPop"><i class="bi bi-pencil-square"></i></button>
@@ -101,35 +103,142 @@
   </main>
 
   <div id="overlayPopup" class="popup-overlay escondido">
+
     <div class="popup-content">
+
       <div class="popup-header">
-        <h2>Editar Perfil</h2>
-        <button id="fecharPop" class="btn-close-pop"><i class="bi bi-x-lg"></i></button>
+        <h2>Editar Informações do Currículo</h2>
+        <button id="fecharPop" type="button" class="btn-close-pop" aria-label="Fechar">&times;</button>
       </div>
 
-      <form method="POST">
-        <div class="form-group">
-          <label for="inputNome">Nome</label>
-          <input type="text" id="inputNome" name="nome" placeholder="Ex: Maria José">
-        </div>
+      <div class="popup-body">
+        <form method="POST" action="salvar_curriculo.php" id="formCurriculo">
 
-        <div class="form-group">
-          <label for="inputHeadline">Cargo</label>
-          <input type="text" name="cargo" id="inputHeadline" placeholder="Ex: Analista de Dados">
-        </div>
+          <fieldset class="form-section">
+            <legend>Dados Pessoais</legend>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes">
+              </div>
+              <div class="form-group">
+                <label for="cargo_pessoal">Cargo</label>
+                <input type="text" id="cargo_pessoal" name="cargo_pessoal" 
+                  placeholder="Ex: Analista de Dados Pleno">
+              </div>
+            </div>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="cidade">Cidade</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo, SP">
+              </div>
+              <div class="form-group">
+                <label for="data_nascimento">Data de nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="resumo">Resumo profissional</label>
+              <textarea id="resumo" name="resumo" rows="4"
+                placeholder="Escreva um breve resumo sobre sua carreira..."></textarea>
+            </div>
+          </fieldset>
 
-        <div class="form-group">
-          <label for="inputSobre">Sobre</label>
-          <textarea id="inputSobre" name="sobre" rows="4" placeholder="Digite algo sobre você..."></textarea>
-        </div>
+          <fieldset class="form-section">
+            <legend>Contatos</legend>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="nome@exemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000">
+              </div>
+            </div>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="linkedin">LinkedIn (URL)</label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="://linkedin.com">
+              </div>
+              <div class="url">
+                <div class="form-group">
+                  <label for="github">GitHub (URL)</label>
+                  <input type="url" id="github" name="github" placeholder="://github.com">
+                </div>
+              </div>
+            </div>
+            <div class="grid-3-col">
+              <div class="form-group">
+                <label for="outros">Outros</label>
+                <input type="text" id="outros" name="outros" placeholder="outros">
+              </div>
+            </div>
+          </fieldset>
 
-        <div class="popup-actions">
-          <button type="button" id="btnCancelar" class="btn-secondary">Cancelar</button>
-          <button type="submit" class="btn-primary">Salvar Alterações</button>
-        </div>
-      </form>
+          <fieldset class="form-section">
+            <legend>Formação Acadêmica</legend>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="instituicao">Instituição</label>
+                <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal">
+              </div>
+              <div class="form-group">
+                <label for="curso">Curso</label>
+                <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação">
+              </div>
+            </div>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="edu_inicio">Data de início</label>
+                <input type="date" id="edu_inicio" name="edu_inicio">
+              </div>
+              <div class="form-group">
+                <label for="edu_fim">Data de término</label>
+                <input type="date" id="edu_fim" name="edu_fim">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend>Experiências Profissionais</legend>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="empresa">Empresa</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Ex: Alfa Tecnologia">
+              </div>
+              <div class="form-group">
+                <label for="cargo_exp">Cargo exercido</label>
+                <input type="text" id="cargo_exp" name="cargo_exp" placeholder="Ex: Analista Júnior">
+              </div>
+            </div>
+            <div class="grid-2-col">
+              <div class="form-group">
+                <label for="exp_inicio">Data de início</label>
+                <input type="date" id="exp_inicio" name="exp_inicio">
+              </div>
+              <div class="form-group">
+                <label for="exp_fim">Data de término</label>
+                <input type="date" id="exp_fim" name="exp_fim">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="descricao_exp">Descrição das atividades</label>
+              <textarea id="descricao_exp" name="descricao_exp" rows="3"
+                placeholder="Descreva suas responsabilidades e conquistas..."></textarea>
+            </div>
+          </fieldset>
+
+          <div class="popup-actions">
+            <button type="button" id="btnCancelar" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Salvar Currículo</button>
+          </div>
+        </form>
+      </div>
+
     </div>
   </div>
+
 
   <script>
     const overlayPopup = document.getElementById('overlayPopup');
@@ -137,14 +246,20 @@
     const btnFechar = document.getElementById('fecharPop');
     const btnCancelar = document.getElementById('btnCancelar');
 
-    function fecharModal() {
-      overlayPopup.classList.add('escondido');
-    }
-    btnAbrir.addEventListener('click', () => {
+    const abrirModal = () => {
       overlayPopup.classList.remove('escondido');
-    });
+      document.body.style.overflow = 'hidden'; 
+    };
+
+    const fecharModal = () => {
+      overlayPopup.classList.add('escondido');
+      document.body.style.overflow = ''; 
+    };
+
+    if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
     btnFechar.addEventListener('click', fecharModal);
     btnCancelar.addEventListener('click', fecharModal);
+
   </script>
 </body>
 
