@@ -30,12 +30,36 @@ main {
     box-shadow: 0 24px 50px rgba(18, 37, 31, 0.08);
 }
 
+a {
+    text-decoration: none;
+    color: var(--letra);
+}
+
+.perfil-acoes {
+    max-width: 850px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    gap: 10px;
+    color: var(--accent);
+}
+
+.perfil-acoes i:hover {
+    padding: 5px;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--bg);
+    transition: .3s ease;
+}
+
 .banner {
-    height: 150px;
+    height: 14vh;
     position: relative;
     background:
         repeating-linear-gradient(120deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 26px),
-        linear-gradient(120deg, var(--accent) 0%, #121e25 100%);
+        linear-gradient(120deg, #0f4d76cb 0%, #121e25fb 100%);
+    padding: 10px;
 }
 
 .header {
@@ -75,25 +99,6 @@ main {
     font-weight: 600;
     padding: 5px 12px;
     border-radius: 20px;
-}
-
-.connect-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 11px 24px;
-    border-radius: 24px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background .2s ease, transform .15s ease;
-}
-
-.connect-btn:hover {
-    background: #0b5c55;
-    transform: translateY(-1px);
 }
 
 .contatos {
