@@ -1,25 +1,12 @@
 <?php
-  $nome = $_POST['nome'] ?? '';
-  $cargo = $_POST['cargo_pessoal'] ?? '';
-  $cidade = $_POST['cidade'] ?? '';
-  $data = $_POST['data_nascimento'] ?? '';
-  $resumo = $_POST['resumo'] ?? '';
+  require_once "crud.php";
 
-  $email = $_POST['email'] ?? '';
-  $telefone = $_POST['telefone'] ?? '';
-  $linkedin = $_POST['linkedin'] ?? '';
-  $github = $_POST['github'] ?? '';
+  $id = (int)($_GET["id"] ?? 0);
 
-  $instituicao = $_POST['instituicao'] ?? '';
-  $curso = $_POST['curso'] ?? '';
-  $edu_inicio = $_POST['edu_inicio'] ?? '';
-  $edu_fim = $_POST['edu_fim'] ?? '';
-
-  $empresa = $_POST['empresa'] ?? '';
-  $cargo_exp = $_POST['cargo_exp'] ?? '';
-  $exp_inicio = $_POST['exp_inicio'] ?? '';
-  $exp_fim = $_POST['exp_fim'] ?? '';
-  $descricao = $_POST['descricao_exp'] ?? '';
+  $pessoal = read($pdo, "dados_pessoais", "id = $id");
+  $contato = read($pdo, "contatos", "dados_pessoais_id = $id");
+  $formacao = readAll($pdo, "formacao", "dados_pessoais_id = $id");
+  $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
 ?>
 
 <!DOCTYPE html>
@@ -44,10 +31,10 @@
     <div class="header">
       <div class="name-row">
         <div class="info-principais">
-          <h1><?= htmlspecialchars($nome) ?></h1>
+          <h1>Maria José</h1>
           <div class="mais-detalhes">
-            <p><?= htmlspecialchars($cidade) ?></p>
-            <p><?= htmlspecialchars($data) ?></p>
+            <p>São Paulo</p>
+            <p>21/06/2000</p>
           </div>
         </div>
         <div class="perfil-acoes">
@@ -56,7 +43,7 @@
       </div>
 
       <div class="contatos">
-        <span><?= htmlspecialchars($email) ?></span>
+        <span>mariajose@gmail.com</span>
         <span>(11) 99999-0000</span>
         <span>linkedin.com/in/mariafernandes</span>
         <span>github.com/mariafernandes</span>
@@ -137,11 +124,11 @@
       </div>
 
       <div class="popup-body">
-        <form method="POST" action="curriculo.php" id="formCurriculo">
+        <form method="POST" action="salvar.php" id="formCurriculo">
 
           <fieldset class="form-section">
             <legend>Dados Pessoais</legend>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="nome">Nome completo</label>
                 <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes">
@@ -152,7 +139,7 @@
                   placeholder="Ex: Analista de Dados Pleno">
               </div>
             </div>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="cidade">Cidade</label>
                 <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo, SP">
@@ -171,7 +158,7 @@
 
           <fieldset class="form-section">
             <legend>Contatos</legend>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="nome@exemplo.com">
@@ -181,7 +168,7 @@
                 <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000">
               </div>
             </div>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="linkedin">LinkedIn (URL)</label>
                 <input type="url" id="linkedin" name="linkedin" placeholder="://linkedin.com">
@@ -193,7 +180,7 @@
                 </div>
               </div>
             </div>
-            <div class="grid-3-col">
+            <div class="grid-3">
               <div class="form-group">
                 <label for="outros">Outros</label>
                 <input type="text" id="outros" name="outros" placeholder="outros">
@@ -203,7 +190,7 @@
 
           <fieldset class="form-section">
             <legend>Formação Acadêmica</legend>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="instituicao">Instituição</label>
                 <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal">
@@ -213,7 +200,7 @@
                 <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação">
               </div>
             </div>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="edu_inicio">Data de início</label>
                 <input type="date" id="edu_inicio" name="edu_inicio">
@@ -227,7 +214,7 @@
 
           <fieldset class="form-section">
             <legend>Experiências Profissionais</legend>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="empresa">Empresa</label>
                 <input type="text" id="empresa" name="empresa" placeholder="Ex: Alfa Tecnologia">
@@ -237,7 +224,7 @@
                 <input type="text" id="cargo_exp" name="cargo_exp" placeholder="Ex: Analista Júnior">
               </div>
             </div>
-            <div class="grid-2-col">
+            <div class="grid-2">
               <div class="form-group">
                 <label for="exp_inicio">Data de início</label>
                 <input type="date" id="exp_inicio" name="exp_inicio">

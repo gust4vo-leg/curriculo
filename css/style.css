@@ -286,7 +286,7 @@ section h2 {
     padding: 0 8px;
 }
 
-.grid-2-col {
+.grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;

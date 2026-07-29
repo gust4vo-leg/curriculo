@@ -16,7 +16,7 @@
         <p>Preencha as informações abaixo para gerar e atualizar seu currículo.</p>
     </header>
     <main>
-        <form method="POST" action="curriculo.php" id="formCurriculo">
+        <form method="POST" action="salvar.php" id="formCurriculo">
 
             <fieldset class="form-section">
                 <legend>Dados Pessoais</legend>
