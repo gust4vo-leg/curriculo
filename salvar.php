@@ -8,7 +8,6 @@ $id = create($pdo, "dados_pessoais", [
     "cidade" => $_POST["cidade"],
     "data_nascimento" => $_POST["data_nascimento"],
     "resumo" => $_POST["resumo"],
-    "informacoes_principais" => $_POST["cidade"]
 ]);
 
 create($pdo, "contatos", [
@@ -16,7 +15,7 @@ create($pdo, "contatos", [
     "email" => $_POST["email"],
     "telefone" => $_POST["telefone"],
     "linkedin" => $_POST["linkedin"],
-    "outro_perfil" => $_POST["github"]
+    "outro_perfil" => $_POST["outros"]
 ]);
 
 create($pdo, "formacao", [

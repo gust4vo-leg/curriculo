@@ -1,12 +1,12 @@
 <?php
-  require_once "crud.php";
+require_once "crud.php";
 
-  $id = (int)($_GET["id"] ?? 0);
+$id = (int)($_GET["id"] ?? 0);
 
-  $pessoal = read($pdo, "dados_pessoais", "id = $id");
-  $contato = read($pdo, "contatos", "dados_pessoais_id = $id");
-  $formacao = readAll($pdo, "formacao", "dados_pessoais_id = $id");
-  $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
+$pessoal = read($pdo, "dados_pessoais", "id = $id");
+$contato = read($pdo, "contatos", "dados_pessoais_id = $id");
+$formacao = readAll($pdo, "formacao", "dados_pessoais_id = $id");
+$experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +31,10 @@
     <div class="header">
       <div class="name-row">
         <div class="info-principais">
-          <h1>Maria José</h1>
+          <h1><?= htmlspecialchars($pessoal["nome"]) ?></h1>
           <div class="mais-detalhes">
-            <p>São Paulo</p>
-            <p>21/06/2000</p>
+            <p><?= htmlspecialchars($pessoal["cidade"]) ?></p>
+            <p><?= htmlspecialchars($pessoal["data_nascimento"]) ?></p>
           </div>
         </div>
         <div class="perfil-acoes">
@@ -42,50 +42,40 @@
         </div>
       </div>
 
-      <div class="contatos">
-        <span>mariajose@gmail.com</span>
-        <span>(11) 99999-0000</span>
-        <span>linkedin.com/in/mariafernandes</span>
-        <span>github.com/mariafernandes</span>
+      <div class="header-main">
+        <div class="contatos">
+          <span><?= htmlspecialchars($contato["email"]) ?></span>
+          <span><?= htmlspecialchars($contato["telefone"]) ?></span>
+          <span><?= htmlspecialchars($contato["linkedin"]) ?></span>
+          <span><?= htmlspecialchars($contato["outro_perfil"]) ?></span>
+        </div>
+
+        <div class="cargo">
+          <span><?= htmlspecialchars($pessoal["cargo"]) ?></span>
+        </div>
       </div>
     </div>
 
     <section class="about">
       <h2>Sobre</h2>
-      <p>Profissional com 5 anos de experiência em análise de dados, especializada em transformar
-        informações complexas em decisões de negócio. Forte domínio de SQL, Python e visualização de
-        dados, com histórico de projetos que aumentaram a eficiência operacional em equipes multidisciplinares.</p>
+      <p><?= htmlspecialchars($pessoal["resumo"]) ?></p>
     </section>
 
     <section>
       <h2>Experiência</h2>
       <div class="linha-tempo">
 
-        <div class="entre">
-          <div class="entre-body">
-            <h3>Analista de Dados Pleno</h3>
-            <p class="meta"><strong>Empresa Alfa Tecnologia</strong> · jan 2023 — atual</p>
-            <p>Liderança de projetos de BI, criação de dashboards e automação de relatórios que
-              reduziram o tempo de análise da equipe em 40%.</p>
-          </div>
-        </div>
+        <?php foreach ($experiencia as $exp) : ?>
 
-        <div class="entre">
-          <div class="entre-body">
-            <h3>Analista de Dados Júnior</h3>
-            <p class="meta"><strong>Empresa Beta Consultoria</strong> · mar 2021 — dez 2022</p>
-            <p>Apoio na construção de pipelines de dados e elaboração de relatórios gerenciais
-              para times comerciais.</p>
+          <div class="entre">
+            <div class="entre-body">
+              <h3><?= htmlspecialchars($exp["funcao"]) ?></h3>
+              <p class="meta"><strong><?= htmlspecialchars($exp["empresa"]) ?></strong> · <?= htmlspecialchars($exp["periodo_inicio"]) ?> — <?= htmlspecialchars($exp["periodo_fim"]) ?></p>
+              <p><?= htmlspecialchars($exp["descricao"]) ?></p>
+            </div>
           </div>
-        </div>
 
-        <div class="entre">
-          <div class="entre-body">
-            <h3>Estagiária de TI</h3>
-            <p class="meta"><strong>Empresa Gama Sistemas</strong> · jul 2019 — fev 2021</p>
-            <p>Suporte a projetos internos e primeiros contatos com análise e organização de dados.</p>
-          </div>
-        </div>
+        <?php endforeach; ?>
 
       </div>
     </section>
@@ -94,22 +84,17 @@
       <h2>Formação</h2>
       <div class="formacao-list">
 
-        <div class="edu-card">
-          <div>
-            <h3>Universidade Federal</h3>
-            <p class="curso">Ciência da Computação</p>
-          </div>
-          <span class="periodo">2016 — 2020</span>
-        </div>
+        <?php foreach ($formacao as $form) : ?>
 
-        <div class="edu-card">
-          <div>
-            <h3>Instituto de Tecnologia</h3>
-            <p class="curso">Pós-graduação em Ciência de Dados</p>
+          <div class="edu-card">
+            <div>
+              <h3><?= htmlspecialchars($form["instituicao"]) ?></h3>
+              <p class="curso"><?= htmlspecialchars($form["curso"]) ?></p>
+            </div>
+            <span class="periodo"><?= htmlspecialchars($form["periodo_inicio"]) ?> — <?= htmlspecialchars($form["periodo_fim"]) ?></span>
           </div>
-          <span class="periodo">2021 — 2022</span>
-        </div>
 
+        <?php endforeach; ?>
       </div>
     </section>
   </main>
@@ -131,22 +116,22 @@
             <div class="grid-2">
               <div class="form-group">
                 <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes">
+                <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($pessoal["nome"]) ?>">
               </div>
               <div class="form-group">
                 <label for="cargo_pessoal">Cargo</label>
                 <input type="text" id="cargo_pessoal" name="cargo_pessoal"
-                  placeholder="Ex: Analista de Dados Pleno">
+                  value="<?= htmlspecialchars($pessoal["cargo"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo, SP">
+                <input type="text" id="cidade" name="cidade" value="<?= htmlspecialchars($pessoal["cidade"]) ?>">
               </div>
               <div class="form-group">
                 <label for="data_nascimento">Data de nascimento</label>
-                <input type="date" id="data_nascimento" name="data_nascimento">
+                <input type="date" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($pessoal["data_nascimento"]) ?>">
               </div>
             </div>
             <div class="form-group">
@@ -161,29 +146,23 @@
             <div class="grid-2">
               <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" placeholder="nome@exemplo.com">
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($contato["email"]) ?>">
               </div>
               <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000">
+                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($contato["telefone"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="linkedin">LinkedIn (URL)</label>
-                <input type="url" id="linkedin" name="linkedin" placeholder="://linkedin.com">
+                <input type="url" id="linkedin" name="linkedin" value="<?= htmlspecialchars($contato["linkedin"]) ?>">
               </div>
               <div class="url">
                 <div class="form-group">
-                  <label for="github">GitHub (URL)</label>
-                  <input type="url" id="github" name="github" placeholder="://github.com">
+                  <label for="github">Outros (URL)</label>
+                  <input type="url" id="outros" name="outros" value="<?= htmlspecialchars($contato["outro_perfil"]) ?>">
                 </div>
-              </div>
-            </div>
-            <div class="grid-3">
-              <div class="form-group">
-                <label for="outros">Outros</label>
-                <input type="text" id="outros" name="outros" placeholder="outros">
               </div>
             </div>
           </fieldset>
@@ -193,21 +172,21 @@
             <div class="grid-2">
               <div class="form-group">
                 <label for="instituicao">Instituição</label>
-                <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal">
+                <input type="text" id="instituicao" name="instituicao" value="<?= htmlspecialchars($form["instituicao"]) ?>">
               </div>
               <div class="form-group">
                 <label for="curso">Curso</label>
-                <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação">
+                <input type="text" id="curso" name="curso" value="<?= htmlspecialchars($form["curso"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="edu_inicio">Data de início</label>
-                <input type="date" id="edu_inicio" name="edu_inicio">
+                <input type="date" id="edu_inicio" name="edu_inicio" value="<?= htmlspecialchars($form["periodo_inicio"]) ?>">
               </div>
               <div class="form-group">
                 <label for="edu_fim">Data de término</label>
-                <input type="date" id="edu_fim" name="edu_fim">
+                <input type="date" id="edu_fim" name="edu_fim" value="<?= htmlspecialchars($form["periodo_fim"]) ?>">
               </div>
             </div>
           </fieldset>
@@ -217,21 +196,21 @@
             <div class="grid-2">
               <div class="form-group">
                 <label for="empresa">Empresa</label>
-                <input type="text" id="empresa" name="empresa" placeholder="Ex: Alfa Tecnologia">
+                <input type="text" id="empresa" name="empresa" value="<?= htmlspecialchars($exp["empresa"]) ?>">
               </div>
               <div class="form-group">
                 <label for="cargo_exp">Cargo exercido</label>
-                <input type="text" id="cargo_exp" name="cargo_exp" placeholder="Ex: Analista Júnior">
+                <input type="text" id="cargo_exp" name="cargo_exp" value="<?= htmlspecialchars($exp["funcao"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="exp_inicio">Data de início</label>
-                <input type="date" id="exp_inicio" name="exp_inicio">
+                <input type="date" id="exp_inicio" name="exp_inicio" value="<?= htmlspecialchars($exp["periodo_inicio"]) ?>">
               </div>
               <div class="form-group">
                 <label for="exp_fim">Data de término</label>
-                <input type="date" id="exp_fim" name="exp_fim">
+                <input type="date" id="exp_fim" name="exp_fim" value="<?= htmlspecialchars($exp["periodo_fim"]) ?>">
               </div>
             </div>
             <div class="form-group">
@@ -243,7 +222,7 @@
 
           <div class="popup-actions">
             <button type="button" id="btnCancelar" class="btn-secondary">Cancelar</button>
-            <button type="submit" class="btn-primary">Salvar Currículo</button>
+            <button type="submit" class="btn-primary">Salvar Alterações</button>
           </div>
         </form>
       </div>

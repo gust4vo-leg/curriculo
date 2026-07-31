@@ -67,15 +67,9 @@
                     </div>
                     <div class="url">
                         <div class="form-group">
-                            <label for="github">GitHub (URL)</label>
-                            <input type="url" id="github" name="github" placeholder="://github.com">
-                        </div>
-                    </div>
-                </div>
-                <div class="grid-3-col">
-                    <div class="form-group">
-                        <label for="outros">Outros</label>
+                        <label for="outros">Outros (URL)</label>
                         <input type="text" id="outros" name="outros" placeholder="outros">
+                    </div>
                     </div>
                 </div>
             </fieldset>
