@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="partials/css/header.css">
+    <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
-    <header>
+    <?php require_once "partials/header.php" ?>
+    <div class="header">
         <h1>Crie seu Currículo</h1>
         <p>Preencha as informações abaixo para gerar e atualizar seu currículo.</p>
-    </header>
+    </div>
     <main>
         <form method="POST" action="salvar.php" id="formCurriculo">
 
@@ -67,9 +70,9 @@
                     </div>
                     <div class="url">
                         <div class="form-group">
-                        <label for="outros">Outros (URL)</label>
-                        <input type="text" id="outros" name="outros" placeholder="outros">
-                    </div>
+                            <label for="outros">Outros (URL)</label>
+                            <input type="text" id="outros" name="outros" placeholder="outros">
+                        </div>
                     </div>
                 </div>
             </fieldset>

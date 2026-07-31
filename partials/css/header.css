@@ -12,3 +12,27 @@
     background: rgba(0, 0, 0, 0.4);
     z-index: 1000;
 }
+
+.topo-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    width: 80px;
+}
+
+.topo-direito {
+    display: flex;
+    gap: 10px;
+}
+
+.topo-direito a {
+    border: 1px solid var(--cor-primaria);
+    text-decoration: none;
+    color: aliceblue;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
