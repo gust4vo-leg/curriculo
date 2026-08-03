@@ -1,137 +1,155 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: "Inter", sans-serif;
-    background: var(--accent-soft);
-    color: var(--letra);
+  font-family: "Inter", sans-serif;
+  background: var(--accent-soft);
+  color: var(--letra);
 }
 
 .header {
-    padding: 130px 30px 0;
+  padding: 130px 30px 0;
 }
 
 .header h1 {
-    color: #1E3A8A;
+  color: #1e3a8a;
 }
 
 .header p {
-    color: var(--detalhes-txt);
+  color: var(--detalhes-txt);
 }
 
 main {
-    padding: 32px 20px 80px;
+  padding: 32px 20px 80px;
 }
 
-form {
-    background: var(--surface);
-    padding: 44px;
-    border: 1px solid var(--cor-cinza-borda);
-    border-radius: 15px;
+.form-principal {
+  background: var(--surface);
+  padding: 44px;
+  border-radius: 15px;
+  border: 1px solid var(--cor-cinza-borda);
+}
+
+.form-popup {
+  background: var(--surface);
+  padding: 44px;
 }
 
 .form-section {
-    border: 1px solid var(--cor-cinza-borda);
-    border-radius: 8px;
-    background-color: #ffffff;
-    padding: 20px;
-    margin-bottom: 20px;
+  border: 1px solid var(--cor-cinza-borda);
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .form-section legend {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--cor-primaria);
-    padding: 0 8px;
-}
-
-.form-section button {
-    display: flex;
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 24px;
-    text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--cor-primaria);
+  padding: 0 8px;
 }
 
 .form-section button:hover {
-    background: var(--cor-primaria-hover);
+  background: var(--cor-primaria-hover);
 }
 
 .grid-2-col {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .form-group {
-    margin-bottom: 14px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 6px;
-    color: var(--cor-texto-mutado);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--cor-texto-mutado);
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 10px 14px;
-    border: 1px solid var(--cor-cinza-borda);
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: var(--cor-texto-principal);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    resize: none;
+  padding: 10px 14px;
+  border: 1px solid var(--cor-cinza-borda);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--cor-texto-principal);
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  resize: none;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
 }
 
 .popup-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 10px;
-    padding-top: 16px;
-    border-top: 1px solid var(--cor-cinza-borda);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+  padding-top: 16px;
+  border-top: 1px solid var(--cor-cinza-borda);
 }
 
 .popup-actions button {
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.2s;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
 }
 
 .btn-secondary {
-    background-color: #e2e8f0;
-    color: #475569;
+  background-color: #e2e8f0;
+  color: #475569;
 }
 
 .btn-secondary:hover {
-    background-color: #cbd5e1;
+  background-color: #cbd5e1;
 }
 
 .btn-primary {
-    background-color: var(--cor-primaria);
-    color: #ffffff;
+  background-color: var(--cor-primaria);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
-    background-color: var(--cor-primaria-hover);
+  background-color: var(--cor-primaria-hover);
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.popup-overlay.escondido {
+  opacity: 0;
+  pointer-events: none;
 }

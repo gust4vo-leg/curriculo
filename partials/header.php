@@ -3,7 +3,7 @@
         <img src="imagens/logoTrans.png" class="logo">
 
       <div class="topo-direito">
-        <a href="login.php" class="login">Login</a>
+        <button type="button" class="login" id="abrirPop">Login</button>
         <a href="cadastrar.php" class="cadastrar">Cadastrar</a>
       </div>
     </div>

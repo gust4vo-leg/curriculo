@@ -21,6 +21,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" href="imagens/logoBra.png">
 </head>
 
 <body>
@@ -136,7 +137,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
             <div class="form-group">
               <label for="resumo">Resumo profissional</label>
               <textarea id="resumo" name="resumo" rows="4"
-                placeholder="Escreva um breve resumo sobre sua carreira..."></textarea>
+                placeholder="Escreva um breve resumo sobre sua carreira..."><?= htmlspecialchars($curriculo["resumo"]) ?></textarea>
             </div>
           </fieldset>
 
@@ -160,7 +161,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
               <div class="url">
                 <div class="form-group">
                   <label for="github">Outros (URL)</label>
-                  <input type="url" id="outros" name="outros" value="<?= htmlspecialchars($curriculo["outro_perfil"]) ?>">
+                  <input type="url" id="outros" name="outros" value="<?= htmlspecialchars($curriculo["outros"]) ?>">
                 </div>
               </div>
             </div>
@@ -199,7 +200,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
               </div>
               <div class="form-group">
                 <label for="cargo_exp">Cargo exercido</label>
-                <input type="text" id="cargo_exp" name="cargo_exp" value="<?= htmlspecialchars($exp["funcao"]) ?>">
+                <input type="text" id="cargo_exp" name="cargo_exp" value="<?= htmlspecialchars($exp["cargo"]) ?>">
               </div>
             </div>
             <div class="grid-2">
@@ -215,7 +216,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
             <div class="form-group">
               <label for="descricao_exp">Descrição das atividades</label>
               <textarea id="descricao_exp" name="descricao_exp" rows="3"
-                placeholder="Descreva suas responsabilidades e conquistas..."></textarea>
+                placeholder="Descreva suas responsabilidades e conquistas..."><?= htmlspecialchars($exp["descricao"]) ?></textarea>
             </div>
           </fieldset>
 

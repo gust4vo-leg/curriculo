@@ -43,6 +43,9 @@
     background: transparent;
     color: var(--accent);
     border: 1px solid var(--accent);
+    padding: 5px 12px;
+    border-radius: 13px;
+    font-weight: bold;
 }
 
 .login:hover{

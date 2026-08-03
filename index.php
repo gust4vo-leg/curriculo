@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="partials/css/header.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="icon" href="imagens/logoBra.png">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
         <p>Preencha as informações abaixo para gerar e atualizar seu currículo.</p>
     </div>
     <main>
-        <form method="POST" action="salvar.php" id="formCurriculo">
+        <form method="POST" action="salvar.php" id="formCurriculo" class="form-principal">
 
             <fieldset class="form-section">
                 <legend>Dados Pessoais</legend>
@@ -80,71 +82,55 @@
             <fieldset class="form-section" id="formacao">
                 <legend>Formação Acadêmica</legend>
 
-                <div id="lista-formacao">
-                    <div class="formacao-item">
-                        <div class="grid-2-col">
-                            <div class="form-group">
-                                <label for="instituicao">Instituição</label>
-                                <input type="text" id="instituicao" name="instituicao[]" placeholder="Ex: Universidade Federal">
-                            </div>
-                            <div class="form-group">
-                                <label for="curso">Curso</label>
-                                <input type="text" id="curso" name="curso[]" placeholder="Ex: Ciência da Computação">
-                            </div>
-                        </div>
-                        <div class="grid-2-col">
-                            <div class="form-group">
-                                <label for="edu_inicio">Data de início</label>
-                                <input type="date" id="edu_inicio" name="edu_inicio[]">
-                            </div>
-                            <div class="form-group">
-                                <label for="edu_fim">Data de término</label>
-                                <input type="date" id="edu_fim" name="edu_fim[]">
-                            </div>
-                        </div>
+                <div class="grid-2-col">
+                    <div class="form-group">
+                        <label for="instituicao">Instituição</label>
+                        <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal">
+                    </div>
+                    <div class="form-group">
+                        <label for="curso">Curso</label>
+                        <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação">
                     </div>
                 </div>
-
-                <button type="button" id="addFormacao">
-                    + Adicionar Experiência
-                </button>
+                <div class="grid-2-col">
+                    <div class="form-group">
+                        <label for="edu_inicio">Data de início</label>
+                        <input type="date" id="edu_inicio" name="edu_inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="edu_fim">Data de término</label>
+                        <input type="date" id="edu_fim" name="edu_fim">
+                    </div>
             </fieldset>
 
             <fieldset class="form-section">
                 <legend>Experiências Profissionais</legend>
 
-                <div id="lista-experiencias">
-                    <div class="experiencia-item">
-                        <div class="grid-2-col">
-                            <div class="form-group">
-                                <label for="empresa">Empresa</label>
-                                <input type="text" id="empresa" name="empresa[]" placeholder="Ex: Alfa Tecnologia">
-                            </div>
-                            <div class="form-group">
-                                <label for="cargo_exp">Cargo exercido</label>
-                                <input type="text" id="cargo_exp" name="cargo_exp[]" placeholder="Ex: Analista Júnior">
-                            </div>
-                        </div>
-                        <div class="grid-2-col">
-                            <div class="form-group">
-                                <label for="exp_inicio">Data de início</label>
-                                <input type="date" id="exp_inicio" name="exp_inicio[]">
-                            </div>
-                            <div class="form-group">
-                                <label for="exp_fim">Data de término</label>
-                                <input type="date" id="exp_fim" name="exp_fim[]">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="descricao_exp">Descrição das atividades</label>
-                            <textarea id="descricao_exp" name="descricao_exp[]" rows="3"
-                                placeholder="Descreva suas responsabilidades e conquistas..."></textarea>
-                        </div>
+                <div class="grid-2-col">
+                    <div class="form-group">
+                        <label for="empresa">Empresa</label>
+                        <input type="text" id="empresa" name="empresa" placeholder="Ex: Alfa Tecnologia">
+                    </div>
+                    <div class="form-group">
+                        <label for="cargo_exp">Cargo exercido</label>
+                        <input type="text" id="cargo_exp" name="cargo_exp" placeholder="Ex: Analista Júnior">
                     </div>
                 </div>
-                <button type="button" id="addExperiencia">
-                    + Adicionar Experiência
-                </button>
+                <div class="grid-2-col">
+                    <div class="form-group">
+                        <label for="exp_inicio">Data de início</label>
+                        <input type="date" id="exp_inicio" name="exp_inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="exp_fim">Data de término</label>
+                        <input type="date" id="exp_fim" name="exp_fim">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descricao_exp">Descrição das atividades</label>
+                    <textarea id="descricao_exp" name="descricao_exp" rows="3"
+                        placeholder="Descreva suas responsabilidades e conquistas..."></textarea>
+                </div>
             </fieldset>
 
             <div class="popup-actions">
@@ -154,40 +140,46 @@
         </form>
     </main>
 
+    <div class="popup-overlay escondido" id="overlayPopup">
+        <div class="container-login">
+            <div class="card-login">
+                <form action="index.php" method="POST" class="form-popup">
+                    <h2>Login</h2>
+
+                    <div class="campo">
+                        <div class="inserir">
+                            <input type="email" placeholder="Email" name="email-login" />
+                            <input type="password" placeholder="Senha" name="senha-login" />
+                        </div>
+                        <a href="#" style="font-size: .65em; margin-top: -.5em;">Esqueceu senha?</a>
+                    </div>
+
+                    <div class="click">
+                        <button type="button" id="fecharPop" class="botao">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script>
-        const lista = document.getElementById("lista-experiencias");
-        const botao = document.getElementById("addExperiencia");
+        const overlayPopup = document.getElementById('overlayPopup');
+        const btnAbrir = document.getElementById('abrirPop');
+        const btnFechar = document.getElementById('fecharPop');
 
-        botao.addEventListener("click", () => {
+        const abrirModal = () => {
+            overlayPopup.classList.remove('escondido');
+            document.body.style.overflow = 'hidden';
+        };
 
-            const primeira = lista.querySelector(".experiencia-item");
+        const fecharModal = () => {
+            overlayPopup.classList.add('escondido');
+            document.body.style.overflow = '';
+        };
 
-            const nova = primeira.cloneNode(true);
-
-            nova.querySelectorAll("input, textarea").forEach(campo => {
-                campo.value = "";
-            });
-
-            lista.appendChild(nova);
-
-        });
-
-        const listaFormacao = document.getElementById("lista-formacao");
-        const botaoFormacao = document.getElementById("addFormacao");
-
-        botaoFormacao.addEventListener("click", () => {
-
-            const primeira = listaFormacao.querySelector(".formacao-item");
-
-            const nova = primeira.cloneNode(true);
-
-            nova.querySelectorAll("input, textarea").forEach(campo => {
-                campo.value = "";
-            });
-
-            listaFormacao.appendChild(nova);
-
-        });
+        if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
+        btnFechar.addEventListener('click', fecharModal);
+        btnCancelar.addEventListener('click', fecharModal);
     </script>
 </body>
 
