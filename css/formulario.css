@@ -48,6 +48,20 @@ form {
     padding: 0 8px;
 }
 
+.form-section button {
+    display: flex;
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px;
+    text-align: center;
+}
+
+.form-section button:hover {
+    background: var(--cor-primaria-hover);
+}
+
 .grid-2-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

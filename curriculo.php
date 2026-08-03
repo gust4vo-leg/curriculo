@@ -3,10 +3,9 @@ require_once "crud.php";
 
 $id = (int)($_GET["id"] ?? 0);
 
-$pessoal = read($pdo, "dados_pessoais", "id = $id");
-$contato = read($pdo, "contatos", "dados_pessoais_id = $id");
-$formacao = readAll($pdo, "formacao", "dados_pessoais_id = $id");
-$experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
+$curriculo = read($pdo, "curriculos", "id = $id");
+$formacoes = readAll($pdo, "formacao", "curriculo_id = $id");
+$experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +30,10 @@ $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
     <div class="header">
       <div class="name-row">
         <div class="info-principais">
-          <h1><?= htmlspecialchars($pessoal["nome"]) ?></h1>
+          <h1><?= htmlspecialchars($curriculo["nome"]) ?></h1>
           <div class="mais-detalhes">
-            <p><?= htmlspecialchars($pessoal["cidade"]) ?></p>
-            <p><?= htmlspecialchars($pessoal["data_nascimento"]) ?></p>
+            <p><?= htmlspecialchars($curriculo["cidade"]) ?></p>
+            <p><?= htmlspecialchars($curriculo["data_nascimento"]) ?></p>
           </div>
         </div>
         <div class="perfil-acoes">
@@ -43,29 +42,29 @@ $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
       </div>
 
       <div class="header-main">
-        <div class="contatos">
-          <span><?= htmlspecialchars($contato["email"]) ?></span>
-          <span><?= htmlspecialchars($contato["telefone"]) ?></span>
-          <span><?= htmlspecialchars($contato["linkedin"]) ?></span>
-          <span><?= htmlspecialchars($contato["outro_perfil"]) ?></span>
+        <div class="curriculos">
+          <span><?= htmlspecialchars($curriculo["email"]) ?></span>
+          <span><?= htmlspecialchars($curriculo["telefone"]) ?></span>
+          <span><?= htmlspecialchars($curriculo["linkedin"]) ?></span>
+          <span><?= htmlspecialchars($curriculo["outro"]) ?></span>
         </div>
 
         <div class="cargo">
-          <span><?= htmlspecialchars($pessoal["cargo"]) ?></span>
+          <span><?= htmlspecialchars($curriculo["cargo"]) ?></span>
         </div>
       </div>
     </div>
 
     <section class="about">
       <h2>Sobre</h2>
-      <p><?= htmlspecialchars($pessoal["resumo"]) ?></p>
+      <p><?= htmlspecialchars($curriculo["resumo"]) ?></p>
     </section>
 
     <section>
       <h2>Experiência</h2>
       <div class="linha-tempo">
 
-        <?php foreach ($experiencia as $exp) : ?>
+        <?php foreach ($experiencias as $exp) : ?>
 
           <div class="entre">
             <div class="entre-body">
@@ -84,7 +83,7 @@ $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
       <h2>Formação</h2>
       <div class="formacao-list">
 
-        <?php foreach ($formacao as $form) : ?>
+        <?php foreach ($formacoes as $form) : ?>
 
           <div class="edu-card">
             <div>
@@ -116,22 +115,22 @@ $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
             <div class="grid-2">
               <div class="form-group">
                 <label for="nome">Nome completo</label>
-                <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($pessoal["nome"]) ?>">
+                <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($curriculo["nome"]) ?>">
               </div>
               <div class="form-group">
-                <label for="cargo_pessoal">Cargo</label>
-                <input type="text" id="cargo_pessoal" name="cargo_pessoal"
-                  value="<?= htmlspecialchars($pessoal["cargo"]) ?>">
+                <label for="cargo_curriculo">Cargo</label>
+                <input type="text" id="cargo_curriculo" name="cargo_curriculo"
+                  value="<?= htmlspecialchars($curriculo["cargo"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="cidade">Cidade</label>
-                <input type="text" id="cidade" name="cidade" value="<?= htmlspecialchars($pessoal["cidade"]) ?>">
+                <input type="text" id="cidade" name="cidade" value="<?= htmlspecialchars($curriculo["cidade"]) ?>">
               </div>
               <div class="form-group">
                 <label for="data_nascimento">Data de nascimento</label>
-                <input type="date" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($pessoal["data_nascimento"]) ?>">
+                <input type="date" id="data_nascimento" name="data_nascimento" value="<?= htmlspecialchars($curriculo["data_nascimento"]) ?>">
               </div>
             </div>
             <div class="form-group">
@@ -142,26 +141,26 @@ $experiencia = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
           </fieldset>
 
           <fieldset class="form-section">
-            <legend>Contatos</legend>
+            <legend>curriculos</legend>
             <div class="grid-2">
               <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" value="<?= htmlspecialchars($contato["email"]) ?>">
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($curriculo["email"]) ?>">
               </div>
               <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($contato["telefone"]) ?>">
+                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($curriculo["telefone"]) ?>">
               </div>
             </div>
             <div class="grid-2">
               <div class="form-group">
                 <label for="linkedin">LinkedIn (URL)</label>
-                <input type="url" id="linkedin" name="linkedin" value="<?= htmlspecialchars($contato["linkedin"]) ?>">
+                <input type="url" id="linkedin" name="linkedin" value="<?= htmlspecialchars($curriculo["linkedin"]) ?>">
               </div>
               <div class="url">
                 <div class="form-group">
                   <label for="github">Outros (URL)</label>
-                  <input type="url" id="outros" name="outros" value="<?= htmlspecialchars($contato["outro_perfil"]) ?>">
+                  <input type="url" id="outros" name="outros" value="<?= htmlspecialchars($curriculo["outro_perfil"]) ?>">
                 </div>
               </div>
             </div>
