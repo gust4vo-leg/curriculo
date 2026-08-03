@@ -9,7 +9,8 @@
     top: 0;
     width: 100%;
     padding: 15px 40px;
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--header); 
+    border-bottom: 1px solid var(--line);
     z-index: 1000;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .logo {
-    width: 80px;
+    width: 8vw;
 }
 
 .topo-direito {
@@ -30,9 +31,30 @@
 }
 
 .topo-direito a {
-    border: 1px solid var(--cor-primaria);
     text-decoration: none;
-    color: aliceblue;
-    padding: 5px 10px;
-    border-radius: 15px;
+    padding: 5px 12px;
+    border-radius: 13px;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+}
+
+.login {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.login:hover{
+    box-shadow: 0 0 3px var(--accent);
+    transition: .3s ease;
+}
+
+.cadastrar{
+    background: var(--accent);
+    color: #fff;
+}
+
+.cadastrar:hover{
+    background: #0c4062;
 }

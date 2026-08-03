@@ -1,6 +1,6 @@
 <header class="topo">
     <div class="topo-menu">
-        <img src="imagens/logo.png" class="logo">
+        <img src="imagens/logoTrans.png" class="logo">
 
       <div class="topo-direito">
         <a href="login.php" class="login">Login</a>
