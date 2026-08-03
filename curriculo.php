@@ -31,9 +31,9 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
       <div class="name-row">
         <div class="info-principais">
           <h1><?= htmlspecialchars($curriculo["nome"]) ?></h1>
+          <p style="color: var(--detalhes-txt); font-size: 13.5px;"><?= htmlspecialchars($curriculo["data_nascimento"]) ?></p>
           <div class="mais-detalhes">
             <p><?= htmlspecialchars($curriculo["cidade"]) ?></p>
-            <p><?= htmlspecialchars($curriculo["data_nascimento"]) ?></p>
           </div>
         </div>
         <div class="perfil-acoes">
@@ -42,11 +42,11 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
       </div>
 
       <div class="header-main">
-        <div class="curriculos">
+        <div class="contatos">
           <span><?= htmlspecialchars($curriculo["email"]) ?></span>
           <span><?= htmlspecialchars($curriculo["telefone"]) ?></span>
           <span><?= htmlspecialchars($curriculo["linkedin"]) ?></span>
-          <span><?= htmlspecialchars($curriculo["outro"]) ?></span>
+          <span><?= htmlspecialchars($curriculo["outros"]) ?></span>
         </div>
 
         <div class="cargo">
@@ -68,7 +68,7 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
 
           <div class="entre">
             <div class="entre-body">
-              <h3><?= htmlspecialchars($exp["funcao"]) ?></h3>
+              <h3><?= htmlspecialchars($exp["cargo"]) ?></h3>
               <p class="meta"><strong><?= htmlspecialchars($exp["empresa"]) ?></strong> · <?= htmlspecialchars($exp["periodo_inicio"]) ?> — <?= htmlspecialchars($exp["periodo_fim"]) ?></p>
               <p><?= htmlspecialchars($exp["descricao"]) ?></p>
             </div>
