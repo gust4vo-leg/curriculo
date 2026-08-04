@@ -12,11 +12,11 @@ if (session_status() === PHP_SESSION_NONE) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário - Curriculo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/formulario.css">
     <link rel="stylesheet" href="partials/css/header.css">
-    <link rel="icon" href="imagens/logoBra.png">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="assets/imagens/logoBra.png">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body>
@@ -152,7 +152,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <h2>Login</h2>
                     <button id="fecharPop" type="button" class="btn-close-pop" aria-label="Fechar">&times;</button>
                 </div>
-                <form action="login.php" method="POST" class="form-popup">
+                <form action="auth/login.php" method="POST" class="form-popup">
 
                     <div class="campo">
                         <div class="inserir">

@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once "crud.php";
+require_once "partials/crud.php";
 
 if (!isset($_SESSION["usuario_id"])) {
     header("Location: index.php");

@@ -1,5 +1,5 @@
 <?php
-require_once "crud.php";
+require_once "partials/crud.php";
 session_start();
 
 if (!isset($_SESSION["usuario_id"])) {
@@ -39,10 +39,10 @@ if ($curriculo["usuario_id"] != $_SESSION["usuario_id"]) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="icon" href="imagens/logoBra.png">
+  <link rel="icon" href="assets/imagens/logoBra.png">
 </head>
 
 <body>

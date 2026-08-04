@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "crud.php";
+require_once "../curriculo/partials/crud.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.php");

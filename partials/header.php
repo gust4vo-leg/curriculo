@@ -17,7 +17,7 @@ if (isset($_SESSION["usuario_id"])) {
 
 <header class="topo">
   <div class="topo-menu">
-    <img src="imagens/logoTrans.png" class="logo">
+    <img src="../assets/imagens/logoTrans.png" class="logo">
 
     <div class="topo-direito">
 
