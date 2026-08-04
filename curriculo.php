@@ -10,11 +10,23 @@ if (!isset($_SESSION["usuario_id"])) {
 $id = (int)($_GET["id"] ?? 0);
 
 $curriculo = read($pdo, "curriculos", "id = $id");
+
+if (!$curriculo) {
+  die("Currículo não encontrado.");
+}
+
 $formacoes = readAll($pdo, "formacao", "curriculo_id = $id");
 $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
 
+$form = $formacoes[0] ?? [];
+$exp = $experiencias[0] ?? [];
+
 $ehDono = isset($_SESSION["usuario_id"]) &&
   $curriculo["usuario_id"] == $_SESSION["usuario_id"];
+
+if ($curriculo["usuario_id"] != $_SESSION["usuario_id"]) {
+  die("Acesso negado.");
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +53,7 @@ $ehDono = isset($_SESSION["usuario_id"]) &&
       <div class="name-row">
         <div class="info-principais">
           <h1><?= htmlspecialchars($curriculo["nome"]) ?></h1>
-          <p style="color: var(--detalhes-txt); font-size: 13.5px;"><?= htmlspecialchars($curriculo["data_nascimento"]) ?></p>
+          <p style="color: var(--detalhes-txt); font-size: 13.5px;"><?= date("d/m/Y", strtotime($curriculo["data_nascimento"])) ?></p>
           <div class="mais-detalhes">
             <p><?= htmlspecialchars($curriculo["cidade"]) ?></p>
           </div>
@@ -132,8 +144,8 @@ $ehDono = isset($_SESSION["usuario_id"]) &&
                 <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($curriculo["nome"]) ?>">
               </div>
               <div class="form-group">
-                <label for="cargo_curriculo">Cargo</label>
-                <input type="text" id="cargo_curriculo" name="cargo_curriculo"
+                <label for="cargo_pessoal">Cargo</label>
+                <input type="text" id="cargo_pessoal" name="cargo_pessoal"
                   value="<?= htmlspecialchars($curriculo["cargo"]) ?>">
               </div>
             </div>
@@ -155,7 +167,7 @@ $ehDono = isset($_SESSION["usuario_id"]) &&
           </fieldset>
 
           <fieldset class="form-section">
-            <legend>curriculos</legend>
+            <legend>Contato</legend>
             <div class="grid-2">
               <div class="form-group">
                 <label for="email">E-mail</label>

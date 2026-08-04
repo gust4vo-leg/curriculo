@@ -1,9 +1,6 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["usuario_id"])) {
-    header("Location: index.php?login=1");
-    exit;
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 ?>
 
@@ -18,7 +15,6 @@ if (!isset($_SESSION["usuario_id"])) {
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="partials/css/header.css">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="icon" href="imagens/logoBra.png">
     <link rel="stylesheet" href="css/login.css">
 </head>
@@ -37,7 +33,7 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="nome">Nome completo</label>
-                        <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes">
+                        <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes" required>
                     </div>
                     <div class="form-group">
                         <label for="cargo_pessoal">Cargo</label>
@@ -48,11 +44,11 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="cidade">Cidade</label>
-                        <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo, SP">
+                        <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo, SP" required>
                     </div>
                     <div class="form-group">
                         <label for="data_nascimento">Data de nascimento</label>
-                        <input type="date" id="data_nascimento" name="data_nascimento">
+                        <input type="date" id="data_nascimento" name="data_nascimento" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -67,22 +63,22 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="nome@exemplo.com">
+                        <input type="email" id="email" name="email" placeholder="nome@exemplo.com" required>
                     </div>
                     <div class="form-group">
                         <label for="telefone">Telefone</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000">
+                        <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-0000" required>
                     </div>
                 </div>
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="linkedin">LinkedIn (URL)</label>
-                        <input type="url" id="linkedin" name="linkedin" placeholder="://linkedin.com">
+                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/seuusuario">
                     </div>
                     <div class="url">
                         <div class="form-group">
                             <label for="outros">Outros (URL)</label>
-                            <input type="text" id="outros" name="outros" placeholder="outros">
+                            <input type="url" id="outros" name="outros" placeholder="outros">
                         </div>
                     </div>
                 </div>
@@ -94,21 +90,21 @@ if (!isset($_SESSION["usuario_id"])) {
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="instituicao">Instituição</label>
-                        <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal">
+                        <input type="text" id="instituicao" name="instituicao" placeholder="Ex: Universidade Federal" required>
                     </div>
                     <div class="form-group">
                         <label for="curso">Curso</label>
-                        <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação">
+                        <input type="text" id="curso" name="curso" placeholder="Ex: Ciência da Computação" required>
                     </div>
                 </div>
                 <div class="grid-2-col">
                     <div class="form-group">
                         <label for="edu_inicio">Data de início</label>
-                        <input type="date" id="edu_inicio" name="edu_inicio">
+                        <input type="date" id="edu_inicio" name="edu_inicio" required>
                     </div>
                     <div class="form-group">
                         <label for="edu_fim">Data de término</label>
-                        <input type="date" id="edu_fim" name="edu_fim">
+                        <input type="date" id="edu_fim" name="edu_fim" required>
                     </div>
             </fieldset>
 
@@ -156,7 +152,7 @@ if (!isset($_SESSION["usuario_id"])) {
                     <h2>Login</h2>
                     <button id="fecharPop" type="button" class="btn-close-pop" aria-label="Fechar">&times;</button>
                 </div>
-                <form action="index.php" method="POST" class="form-popup">
+                <form action="login.php" method="POST" class="form-popup">
 
                     <div class="campo">
                         <div class="inserir">
@@ -171,7 +167,7 @@ if (!isset($_SESSION["usuario_id"])) {
                     </div>
 
                     <div class="click">
-                        <button type="button" id="fecharPop" class="botao">Entrar</button>
+                        <button type="submit" class="botao">Entrar</button>
                     </div>
                 </form>
             </div>
@@ -191,11 +187,16 @@ if (!isset($_SESSION["usuario_id"])) {
         const fecharModal = () => {
             overlayPopup.classList.add('escondido');
             document.body.style.overflow = '';
+
+            overlayPopup.addEventListener("click", (e) => {
+                if (e.target === overlayPopup) {
+                    fecharModal();
+                }
+            });
         };
 
         if (btnAbrir) btnAbrir.addEventListener('click', abrirModal);
         btnFechar.addEventListener('click', fecharModal);
-        btnCancelar.addEventListener('click', fecharModal);
     </script>
 
     <?php if (isset($_GET["login"])) : ?>

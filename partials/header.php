@@ -1,5 +1,18 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+require_once "crud.php";
+
+$curriculo = null;
+
+if (isset($_SESSION["usuario_id"])) {
+  $curriculo = read(
+    $pdo,
+    "curriculos",
+    "usuario_id = " . (int)$_SESSION["usuario_id"]
+  );
+}
 ?>
 
 <header class="topo">
@@ -10,13 +23,16 @@ session_start();
 
       <?php if (isset($_SESSION["usuario_id"])) : ?>
 
-        <span class="usuario">
-          Olá, <?= htmlspecialchars($_SESSION["nome"]) ?>
-        </span>
-        <a href="curriculo.php" class="login">
-          Meu Currículo
-        </a>
-        
+        <?php if ($curriculo): ?>
+          <a href="curriculo.php?id=<?= $curriculo["id"] ?>" class="login">
+            Meu Currículo
+          </a>
+        <?php else: ?>
+          <a href="index.php" class="login">
+            Criar Currículo
+          </a>
+        <?php endif; ?>
+
         <a href="logout.php" class="cadastrar">
           Sair
         </a>
