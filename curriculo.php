@@ -1,11 +1,20 @@
 <?php
 require_once "crud.php";
+session_start();
+
+if (!isset($_SESSION["usuario_id"])) {
+  header("Location: index.php");
+  exit;
+}
 
 $id = (int)($_GET["id"] ?? 0);
 
 $curriculo = read($pdo, "curriculos", "id = $id");
 $formacoes = readAll($pdo, "formacao", "curriculo_id = $id");
 $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
+
+$ehDono = isset($_SESSION["usuario_id"]) &&
+  $curriculo["usuario_id"] == $_SESSION["usuario_id"];
 ?>
 
 <!DOCTYPE html>
@@ -37,9 +46,13 @@ $experiencias = readAll($pdo, "experiencias", "curriculo_id = $id");
             <p><?= htmlspecialchars($curriculo["cidade"]) ?></p>
           </div>
         </div>
-        <div class="perfil-acoes">
-          <button class="btn-edit" id="abrirPop"><i class="bi bi-pencil-square"></i></button>
-        </div>
+        <?php if ($ehDono): ?>
+          <div class="perfil-acoes">
+            <button class="btn-edit" id="abrirPop">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+          </div>
+        <?php endif; ?>
       </div>
 
       <div class="header-main">

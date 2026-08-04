@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["usuario_id"])) {
+    header("Location: index.php?login=1");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -188,6 +197,12 @@
         btnFechar.addEventListener('click', fecharModal);
         btnCancelar.addEventListener('click', fecharModal);
     </script>
+
+    <?php if (isset($_GET["login"])) : ?>
+        <script>
+            abrirModal();
+        </script>
+    <?php endif; ?>
 </body>
 
 </html>
