@@ -143,15 +143,22 @@
     <div class="popup-overlay escondido" id="overlayPopup">
         <div class="container-login">
             <div class="card-login">
-                <form action="index.php" method="POST" class="form-popup">
+                <div class="popup-header">
                     <h2>Login</h2>
+                    <button id="fecharPop" type="button" class="btn-close-pop" aria-label="Fechar">&times;</button>
+                </div>
+                <form action="index.php" method="POST" class="form-popup">
 
                     <div class="campo">
                         <div class="inserir">
-                            <input type="email" placeholder="Email" name="email-login" />
+                            <label for="senha">E-mail</label>
+                            <input type="email" placeholder="Ex: mariocleber@gmail.com" name="email" />
+                        </div>
+                        <div class="inserir">
+                            <label for="senha">Senha</label>
                             <input type="password" placeholder="Senha" name="senha-login" />
                         </div>
-                        <a href="#" style="font-size: .65em; margin-top: -.5em;">Esqueceu senha?</a>
+                        <a href="cadastrar.php" style="font-size: .7em; margin-top: -.6em;">Não tem conta? <span>Cadastrar-se já</span></a>
                     </div>
 
                     <div class="click">

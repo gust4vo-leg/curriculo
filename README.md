@@ -22,16 +22,15 @@ Criar um currículo digital utilizando PHP, MySQL, HTML e CSS, consumindo as inf
 - [x] Modelagem do banco de dados.
 - [x] Criação das tabelas.
 - [x] Estilização do currículo.
-
+- [x] Conexão com o banco utilizando PDO.
+- [x] Exibição das informações na página.
 ### Em andamento
-- [ ] Conexão com o banco utilizando PDO.
 - [ ] Consulta dos dados.
-- [ ] Exibição das informações na página.
 
 ## Estrutura do Banco
 
-- dados_pessoais
-- contatos
+- usuarios
+- curriculos
 - experiencias
 - formacao
 

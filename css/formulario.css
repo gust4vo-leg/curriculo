@@ -33,11 +33,6 @@ main {
   border: 1px solid var(--cor-cinza-borda);
 }
 
-.form-popup {
-  background: var(--surface);
-  padding: 44px;
-}
-
 .form-section {
   border: 1px solid var(--cor-cinza-borda);
   border-radius: 8px;

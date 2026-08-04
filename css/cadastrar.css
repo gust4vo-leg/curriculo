@@ -37,16 +37,14 @@ body {
 .campo {
   display: flex;
   flex-direction: column;
-}
-
-.campo a {
-  margin-right: 30em;
+  gap: 10px;
 }
 
 .inserir {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  font-weight: bold;
 }
 
 .campo input {
