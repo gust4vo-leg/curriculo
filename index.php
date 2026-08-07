@@ -36,7 +36,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <input type="text" id="nome" name="nome" placeholder="Ex: Maria Fernandes" required>
                     </div>
                     <div class="form-group">
-                        <label for="cargo_pessoal">Cargo</label>
+                        <label for="cargo_pessoal">Cargo de Preferência</label>
                         <input type="text" id="cargo_pessoal" name="cargo_pessoal"
                             placeholder="Ex: Analista de Dados Pleno">
                     </div>
@@ -152,7 +152,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <h2>Login</h2>
                     <button id="fecharPop" type="button" class="btn-close-pop" aria-label="Fechar">&times;</button>
                 </div>
-                <form action="auth/login.php" method="POST" class="form-popup">
+                <form action="login.php" method="POST" class="form-popup">
 
                     <div class="campo">
                         <div class="inserir">

@@ -43,9 +43,11 @@ if ($curriculo["usuario_id"] != $_SESSION["usuario_id"]) {
   <link rel="stylesheet" href="assets/css/global.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="icon" href="assets/imagens/logoBra.png">
+  <link rel="stylesheet" href="partials/css/header.css">
 </head>
 
 <body>
+  <?php require_once "partials/header.php" ?>
   <main>
     <div class="banner"></div>
 
@@ -94,7 +96,7 @@ if ($curriculo["usuario_id"] != $_SESSION["usuario_id"]) {
 
           <div class="entre">
             <div class="entre-body">
-              <h3><?= htmlspecialchars($exp["cargo"]) ?></h3>
+              <h3>Cargo exercido: <?= htmlspecialchars($exp["cargo"]) ?></h3>
               <p class="meta"><strong><?= htmlspecialchars($exp["empresa"]) ?></strong> · <?= htmlspecialchars($exp["periodo_inicio"]) ?> — <?= htmlspecialchars($exp["periodo_fim"]) ?></p>
               <p><?= htmlspecialchars($exp["descricao"]) ?></p>
             </div>
