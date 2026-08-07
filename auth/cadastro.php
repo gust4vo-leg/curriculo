@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once "../curriculo/partials/crud.php";
+require_once "../partials/crud.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: cadastrar.php");
+    header("Location: ../cadastrar.php");
     exit;
 }
 
@@ -46,5 +46,5 @@ $id = create($pdo, "usuarios", [
 $_SESSION["usuario_id"] = $id;
 $_SESSION["nome"] = $nome;
 
-header("Location: index.php");
+header("Location: ../index.php");
 exit;

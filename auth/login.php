@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../curriculo/partials/crud.php";
+require_once "../partials/crud.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: index.php");
@@ -33,5 +33,5 @@ if (!password_verify($senha, $usuario["senha"])) {
 $_SESSION["usuario_id"] = $usuario["id"];
 $_SESSION["nome"] = $usuario["nome"];
 
-header("Location: index.php");
+header("Location: ../index.php");
 exit;
